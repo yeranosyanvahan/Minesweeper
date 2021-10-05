@@ -7,7 +7,8 @@ class Grid:
         self.size=(width,height)
         self.clear()
         self.set_background_color((127,127,127))
-    
+    def update(self):
+        pass
     # Get neighbors of a cell
     def neighbors(self,positions:tuple):
         positions=np.array(positions)
@@ -186,15 +187,19 @@ class Game:
                      if event.button == 1: # left click
                          res = self.Grid.massclick((X,Y))
                          over,refresh = (res['over'],res['refresh'])
-                         if(refresh):
-                            self.draw_board()
                          if(over):
                             run = False
                             win = res['win']
+                            break
+                         if(refresh):
+                            self.Grid.update()
+                            self.draw_board()
+
                      elif event.button == 3: # right click
                          refresh = self.Grid.rclick((X,Y))['refresh']
                          if(refresh):
                             self.draw_board()
+       self.draw_board()
        if(win):
             self.drawtext("You Won. Press R to Restart or Q to quit")
        else:
@@ -217,7 +222,6 @@ class Game:
                         self.Grid.generate(np.sum(G==-1)+np.sum(G==-9))
                         self.set_background_color(self.background_color)
                         self.draw_board()
-
                         self.play()
     def wait(self,sec):
         clock = pygame.time.Clock()
