@@ -10,7 +10,7 @@ class Grid:
     def update(self):
         pass
     # Get neighbors of a cell
-    def neighbors(self,positions:tuple):
+    def neighbors(self,positions):
         positions=np.array(positions)
         stack=[]
         for addx in range(-1,2,1):
@@ -173,6 +173,7 @@ class Game:
        clock = pygame.time.Clock()
        run = True
        win = False
+       self.Grid.boardcolorinit()
        while run:
         for event in pygame.event.get():
             clock.tick(60)
