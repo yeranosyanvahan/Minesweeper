@@ -174,6 +174,7 @@ class Game:
        run = True
        win = False
        self.Grid.boardcolorinit()
+       self.draw_board()
        while run:
         for event in pygame.event.get():
             clock.tick(60)
