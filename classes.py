@@ -250,12 +250,12 @@ class Game:
 
         if(x!=None):
             rect.x=x
-        rect.width+=300
-        rect.x-=150
+        rect.width+=80
+        rect.x-=40
         self.Win.fill(self.background_color,rect)
         
-        rect.x+=150
-        rect.width-=300
+        rect.x+=40
+        rect.width-=80
         self.Win.blit(screen_text, rect)
         
         pygame.display.update()
